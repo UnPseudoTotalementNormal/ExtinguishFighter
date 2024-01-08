@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 959851616}
   - component: {fileID: 959851622}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,6 +715,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f177953c-4a8e-4c89-8bf1-70fc86f42732
     m_ActionName: Plyaer/Movement[/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 995575790}
+        m_TargetAssemblyTypeName: PlayerHandScript, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 98a662d2-063d-4ce5-ad08-7d644ea42c77
+    m_ActionName: Player/Shoot[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -842,6 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995575789}
+  - component: {fileID: 995575790}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -865,6 +882,18 @@ Transform:
   - {fileID: 8769233943058262576}
   m_Father: {fileID: 1157170807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995575790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995575788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a1c814105208d4191b8d58367190f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1046531589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Double-barrel_gun
       objectReference: {fileID: 0}
+    - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
+      propertyPath: _ownerRigidbody
+      value: 
+      objectReference: {fileID: 959851617}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

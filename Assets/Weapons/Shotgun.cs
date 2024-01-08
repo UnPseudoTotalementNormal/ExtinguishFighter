@@ -7,7 +7,10 @@ public class Shotgun : Weapon
     {
         if (CanShoot())
         {
-            _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward);
+            _ammo--;
+
+            _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
+            StartCoroutine(WaitForFireRate());
         }
     }
 }

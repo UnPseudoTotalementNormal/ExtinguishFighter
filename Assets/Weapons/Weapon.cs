@@ -51,7 +51,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual bool CanShoot()
     {
-        return (b_hasSwitched && !b_isReloading && !b_waitingFireRate);
+        return (_ammo > 0 && b_hasSwitched && !b_isReloading && !b_waitingFireRate);
     }
 
     public virtual IEnumerator Reload()
