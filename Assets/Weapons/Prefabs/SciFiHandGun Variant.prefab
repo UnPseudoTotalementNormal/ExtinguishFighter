@@ -394,14 +394,17 @@ MonoBehaviour:
   _damage: 0
   _maxRange: 40
   _impactKnocback: 0
-  _ownKnockback: -10
-  _firingRate: 1
+  _ownKnockback: -0.03
+  _firingRate: 0.1
   _shootParticles: {fileID: 0}
   _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
-  _switchTime: 0.25
-  _unswitchTime: 0.25
+  _switchTime: 0.1
+  _unswitchTime: 0.1
   _shootSound: {fileID: 0}
   _reloadSound: {fileID: 0}
+  _grapplingForce: 0.03
+  _grapplingMaxForce: 10
+  _grapplingSideBrakeForce: 0.01
 --- !u!4 &6186625083252020164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4021266016307886, guid: 392a05bd229c33043ae112a856120172, type: 3}

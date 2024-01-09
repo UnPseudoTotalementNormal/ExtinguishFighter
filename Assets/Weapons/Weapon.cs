@@ -66,6 +66,11 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
+        CalculateWeaponRotationOffset();
+    }
+
+    protected virtual private void CalculateWeaponRotationOffset()
+    {
         if (b_isReloading || !b_hasSwitched)
         {
             Transform switchingOffset = transform.Find("SwitchingOffset");
@@ -80,7 +85,6 @@ public abstract class Weapon : MonoBehaviour
         _weaponRotationOffset = _ownerRigidbody.angularVelocity * 2;
         _meshTransform.localRotation = Quaternion.Lerp(_meshTransform.localRotation, Quaternion.Euler(_weaponRotationOffset), 6);
     }
-
     protected private void TransformToOffset(Transform tOffset, bool b_lerp = true, float t = 12)
     {
         if (b_lerp)
@@ -142,10 +146,11 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public virtual void StopShooting()
-    {
+    public virtual void StopShooting() { }
 
-    }
+    public virtual void AlternateShoot() { }
+
+    public virtual void StopAlternateShooting() { }
 
     public virtual bool CanShoot(bool needAmmo = true)
     {

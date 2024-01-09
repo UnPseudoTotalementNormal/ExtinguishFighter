@@ -89,6 +89,22 @@ public class PlayerHandScript : MonoBehaviour
         
     }
 
+    public void OnAlternateShoot(InputAction.CallbackContext context)
+    {
+        Weapon weapon = GetCurrentWeapon();
+        if (weapon)
+        {
+            if (context.started)
+            {
+                weapon.AlternateShoot();
+            }
+            if (context.canceled)
+            {
+                weapon.StopAlternateShooting();
+            }
+        }
+    }
+
     public void OnReload(InputAction.CallbackContext context)
     {
         if (context.started)
