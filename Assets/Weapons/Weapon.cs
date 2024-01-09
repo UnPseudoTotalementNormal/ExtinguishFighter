@@ -33,6 +33,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private float _ownKnockback;
     [SerializeField] protected private float _firingRate;
     [SerializeField] protected private GameObject _shootParticles;
+    [SerializeField] protected private GameObject _impactParticles;
 
     [Header("Misc")]
     [SerializeField] protected private float _switchTime;
@@ -64,6 +65,10 @@ public abstract class Weapon : MonoBehaviour
 
             if (_bulletType == BULLET_TYPE.RAYCAST && Physics.Raycast(_ownerRigidbody.transform.position, _ownerRigidbody.transform.forward, out RaycastHit hitInfo, _maxRange))
             {
+                if (_impactParticles)
+                {
+                    Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal));
+                }
                 if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
                 {
                     healthComponent.ModifyHealth(-_damage);
