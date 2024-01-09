@@ -277,7 +277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096318399355685499
 Transform:
   m_ObjectHideFlags: 0
@@ -322,8 +322,8 @@ MonoBehaviour:
   _firingRate: 0
   _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
   _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
-  _switchTime: 0.25
-  _unswitchTime: 0.25
+  _switchTime: 0.1
+  _unswitchTime: 0.1
   _shootSound: {fileID: 0}
   _reloadSound: {fileID: 0}
 --- !u!1 &6719665348160186954

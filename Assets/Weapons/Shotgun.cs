@@ -13,7 +13,7 @@ public class Shotgun : Weapon
             {
                 if (_impactParticles)
                 {
-                    Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal));
+                    Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
                 }
                 if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
                 {
@@ -26,7 +26,7 @@ public class Shotgun : Weapon
 
             if (_shootParticles)
             {
-                Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation);
+                Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 10);
             }
         }
     }
