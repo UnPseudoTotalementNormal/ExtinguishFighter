@@ -29,7 +29,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private float _damage;
     [SerializeField] protected private float _impactKnocback;
     [SerializeField] protected private float _ownKnockback;
-    [SerializeField] protected private float _firingRate;    
+    [SerializeField] protected private float _firingRate;
+    [SerializeField] protected private GameObject _shootParticles;
 
     [Header("Misc")]
     [SerializeField] protected private float _switchTime;
@@ -57,6 +58,11 @@ public abstract class Weapon : MonoBehaviour
 
             _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
             StartCoroutine(WaitForFireRate());
+
+            if (_shootParticles)
+            {
+                Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation);
+            }
         }
     }
 
@@ -83,5 +89,18 @@ public abstract class Weapon : MonoBehaviour
     public virtual IEnumerator Unswitching()
     {
         yield return null;
+    }
+
+    public Transform GetParticlesTransform()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            if (child.name.Contains("ParticlesPosition"))
+            {
+                return child;
+            }
+        }
+        return null;
     }
 }

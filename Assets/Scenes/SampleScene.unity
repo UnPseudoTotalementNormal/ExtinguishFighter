@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 136828306}
   - component: {fileID: 136828305}
   - component: {fileID: 136828304}
+  - component: {fileID: 136828307}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -225,6 +226,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &136828307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136828302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c763099f3a549b4083769eabe60ba62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammoText: {fileID: 1746497276}
 --- !u!1 &552767874
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +948,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1749,10 +1763,6 @@ PrefabInstance:
     - target: {fileID: 6370851276827399885, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
       propertyPath: m_Name
       value: Double-barrel_gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
-      propertyPath: _shootType
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
       propertyPath: _ownerRigidbody
