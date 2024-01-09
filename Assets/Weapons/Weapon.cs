@@ -50,8 +50,8 @@ public abstract class Weapon : MonoBehaviour
     protected private bool b_waitingFireRate = false;
     protected private bool b_hasSwitched = true;
 
-    private Vector3 _weaponRotationOffset = Vector3.zero;
-    private Transform _meshTransform;
+    protected private Vector3 _weaponRotationOffset = Vector3.zero;
+    protected private Transform _meshTransform;
 
     public int Ammo { get { return _ammo; } }
     public int MaxAmmo { get { return _maxAmmo; } }
@@ -124,7 +124,7 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (_impactParticles)
                 {
-                    Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal));
+                    Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
                 }
                 if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
                 {
@@ -137,9 +137,14 @@ public abstract class Weapon : MonoBehaviour
 
             if (_shootParticles)
             {
-                Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation);
+                Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 10);
             }
         }
+    }
+
+    public virtual void StopShooting()
+    {
+
     }
 
     public virtual bool CanShoot(bool needAmmo = true)
