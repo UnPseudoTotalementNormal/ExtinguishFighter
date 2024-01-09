@@ -46,14 +46,14 @@ public class PlayerController : MonoBehaviour
     {
         _mouseVel += Mouse.current.delta.ReadValue();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        /*if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             _shootSource.Play();
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             _shootSource.Stop();
-        }
+        }*/
     }
 
     private void FixedUpdate()
