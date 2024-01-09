@@ -51,10 +51,23 @@ public abstract class Weapon : MonoBehaviour
     public int Ammo { get { return _ammo; } }
     public int MaxAmmo { get { return _maxAmmo; } }
     public bool HasSwitched { get { return b_hasSwitched; } }
+    public float SwitchTime { get { return _switchTime; } }
+    public float UnswitchTime {  get { return _unswitchTime; } }
 
     public virtual IEnumerator Switching()
     {
-        yield return null;
+        gameObject.SetActive(true);
+        b_hasSwitched = false;
+        yield return new WaitForSeconds(SwitchTime);
+        b_hasSwitched = true;
+    }
+
+    public virtual IEnumerator Unswitching()
+    {
+        b_hasSwitched = false;
+        yield return new WaitForSeconds(UnswitchTime);
+        b_hasSwitched = true;
+        gameObject.SetActive(false);
     }
 
     public virtual void Shoot()
@@ -114,11 +127,6 @@ public abstract class Weapon : MonoBehaviour
         b_waitingFireRate = true;
         yield return new WaitForSeconds(_firingRate);
         b_waitingFireRate = false;
-    }
-
-    public virtual IEnumerator Unswitching()
-    {
-        yield return null;
     }
 
     public Transform GetParticlesTransform()

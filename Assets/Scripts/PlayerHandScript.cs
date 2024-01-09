@@ -25,6 +25,54 @@ public class PlayerHandScript : MonoBehaviour
         return null;
     }
 
+    private IEnumerator SwitchWeapon(int toWeaponIndex)
+    {
+        print(toWeaponIndex);
+        Weapon weaponSwitched = GetCurrentWeapon();
+        Weapon weaponSwitchingTo = transform.GetChild(toWeaponIndex).GetComponent<Weapon>();
+        StartCoroutine(weaponSwitched.Unswitching());
+        while (!weaponSwitched.HasSwitched)
+        {
+            yield return null;
+        }
+        StartCoroutine(weaponSwitchingTo.Switching());
+        yield return null;
+    }
+
+    public void OnWeaponSwitchRoll(InputAction.CallbackContext context)
+    {
+        if (context.started && (int)context.ReadValue<Vector2>().y != 0)
+        {
+            Weapon currentWeapon = GetCurrentWeapon();
+            Transform currentWeaponTransform = currentWeapon.transform;
+            if (currentWeapon.HasSwitched && currentWeapon.CanShoot(false))
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (currentWeaponTransform == transform.GetChild(i))
+                    {
+                        if (transform.childCount <= (i + (int)context.ReadValue<Vector2>().y) || (i + (int)context.ReadValue<Vector2>().y) < 0)
+                        {
+                            if (i + (int)context.ReadValue<Vector2>().y < 0)
+                            {
+                                StartCoroutine(SwitchWeapon(transform.childCount - 1));
+                            }
+                            else
+                            {
+                                StartCoroutine(SwitchWeapon(0));
+                            }
+                        }
+                        else
+                        {
+                            StartCoroutine(SwitchWeapon(i + (int)context.ReadValue<Vector2>().y));
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.started)

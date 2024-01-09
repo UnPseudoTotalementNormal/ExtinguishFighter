@@ -983,6 +983,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 776ebe3c-38f2-4a31-973f-b48b87f9d54d
     m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 995575790}
+        m_TargetAssemblyTypeName: PlayerHandScript, Assembly-CSharp
+        m_MethodName: OnWeaponSwitchRoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b967662-30e3-44e6-84f7-cd60a3b0ba3b
+    m_ActionName: Player/WeaponSwitch[/Mouse/scroll/up,/Mouse/scroll/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1889,10 +1905,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Double-barrel_gun
       objectReference: {fileID: 0}
-    - target: {fileID: 6370851276827399885, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
       propertyPath: _ownerRigidbody
       value: 
@@ -1910,6 +1922,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 995575789}
     m_Modifications:
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _switchTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _unswitchTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _ownerRigidbody
+      value: 
+      objectReference: {fileID: 959851617}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _impactParticles
+      value: 
+      objectReference: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
     - target: {fileID: 6183842689164604300, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: m_Name
       value: SciFiHandGun
