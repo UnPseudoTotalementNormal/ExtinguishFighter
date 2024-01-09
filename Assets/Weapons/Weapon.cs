@@ -29,7 +29,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private float _damage;
     [SerializeField] protected private float _impactKnocback;
     [SerializeField] protected private float _ownKnockback;
-    [SerializeField] protected private float _firingRate;
+    [SerializeField] protected private float _firingRate;    
 
     [Header("Misc")]
     [SerializeField] protected private float _switchTime;
@@ -40,6 +40,8 @@ public abstract class Weapon : MonoBehaviour
     protected private bool b_waitingFireRate = false;
     protected private bool b_hasSwitched = true;
 
+    public int Ammo { get { return _ammo; } }
+    public int MaxAmmo { get { return _maxAmmo; } }
     public bool HasSwitched { get { return b_hasSwitched; } }
 
     public virtual IEnumerator Switching()
@@ -47,7 +49,16 @@ public abstract class Weapon : MonoBehaviour
         yield return null;
     }
 
-    public abstract void Shoot();
+    public virtual void Shoot()
+    {
+        if (CanShoot())
+        {
+            _ammo--;
+
+            _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
+            StartCoroutine(WaitForFireRate());
+        }
+    }
 
     public virtual bool CanShoot()
     {
@@ -59,6 +70,7 @@ public abstract class Weapon : MonoBehaviour
         b_isReloading = true;
         yield return new WaitForSeconds(_reloadTime);
         b_isReloading = false;
+        _ammo = _maxAmmo;
     }
 
     public virtual IEnumerator WaitForFireRate()
