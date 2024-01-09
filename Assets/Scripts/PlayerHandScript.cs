@@ -29,7 +29,11 @@ public class PlayerHandScript : MonoBehaviour
     {
         if (context.started)
         {
-            GetCurrentWeapon().Shoot();
+            Weapon weapon = GetCurrentWeapon();
+            if (weapon) 
+            {
+                weapon.Shoot();
+            }
         }
     }
 
@@ -37,7 +41,11 @@ public class PlayerHandScript : MonoBehaviour
     {
         if (context.started)
         {
-            StartCoroutine(GetCurrentWeapon().Reload());
+            Weapon weapon = GetCurrentWeapon();
+            if (weapon)
+            {
+                StartCoroutine(weapon.Reload());
+            }
         }
     }
 }

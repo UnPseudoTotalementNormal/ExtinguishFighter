@@ -22,6 +22,9 @@ public class HUDScript : MonoBehaviour
     private void AmmoDisplay()
     {
         Weapon currentWeapon = _playerHandScript.GetCurrentWeapon();
-        _ammoText.text = "Ammo: " + currentWeapon.Ammo + "/" + currentWeapon.MaxAmmo;
+        if (currentWeapon != null)
+        {
+            _ammoText.text = "Ammo: " + currentWeapon.Ammo + "/" + currentWeapon.MaxAmmo;
+        }
     }
 }
