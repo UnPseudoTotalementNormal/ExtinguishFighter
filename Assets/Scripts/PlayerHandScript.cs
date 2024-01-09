@@ -27,7 +27,6 @@ public class PlayerHandScript : MonoBehaviour
 
     private IEnumerator SwitchWeapon(int toWeaponIndex)
     {
-        print(toWeaponIndex);
         Weapon weaponSwitched = GetCurrentWeapon();
         Weapon weaponSwitchingTo = transform.GetChild(toWeaponIndex).GetComponent<Weapon>();
         StartCoroutine(weaponSwitched.Unswitching());

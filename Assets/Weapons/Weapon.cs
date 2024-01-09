@@ -1,6 +1,8 @@
 using System.Collections;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -48,14 +50,56 @@ public abstract class Weapon : MonoBehaviour
     protected private bool b_waitingFireRate = false;
     protected private bool b_hasSwitched = true;
 
+    private Vector3 _weaponRotationOffset = Vector3.zero;
+    private Transform _meshTransform;
+
     public int Ammo { get { return _ammo; } }
     public int MaxAmmo { get { return _maxAmmo; } }
     public bool HasSwitched { get { return b_hasSwitched; } }
     public float SwitchTime { get { return _switchTime; } }
     public float UnswitchTime {  get { return _unswitchTime; } }
 
+    protected virtual void Awake()
+    {
+        _meshTransform = transform.Find("Mesh");
+    }
+
+    protected virtual void Update()
+    {
+        if (b_isReloading || !b_hasSwitched)
+        {
+            Transform switchingOffset = transform.Find("SwitchingOffset");
+            if (switchingOffset) TransformToOffset(switchingOffset);
+        }
+        else
+        {
+            Transform defaultOffset = transform.Find("DefaultOffset");
+            if (defaultOffset) TransformToOffset(defaultOffset);
+        }
+
+        _weaponRotationOffset = _ownerRigidbody.angularVelocity * 2;
+        _meshTransform.localRotation = Quaternion.Lerp(_meshTransform.localRotation, Quaternion.Euler(_weaponRotationOffset), 6);
+    }
+
+    protected private void TransformToOffset(Transform tOffset, bool b_lerp = true, float t = 12)
+    {
+        if (b_lerp)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, tOffset.localPosition, t * Time.deltaTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, tOffset.localRotation, t * Time.deltaTime);
+        }
+        else
+        {
+            transform.localPosition = tOffset.localPosition;
+            transform.localRotation = tOffset.localRotation;
+        }
+    }
+
     public virtual IEnumerator Switching()
     {
+        Transform switchingOffset = transform.Find("SwitchingOffset");
+        if (switchingOffset) TransformToOffset(switchingOffset, false);
+
         gameObject.SetActive(true);
         b_hasSwitched = false;
         yield return new WaitForSeconds(SwitchTime);
