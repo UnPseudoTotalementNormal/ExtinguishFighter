@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
@@ -79,17 +80,28 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public virtual bool CanShoot()
+    public virtual bool CanShoot(bool needAmmo = true)
     {
-        return (_ammo > 0 && b_hasSwitched && !b_isReloading && !b_waitingFireRate);
+        if (needAmmo)
+        {
+            return (_ammo > 0 && b_hasSwitched && !b_isReloading && !b_waitingFireRate);
+        }
+        else
+        {
+            return (b_hasSwitched && !b_isReloading && !b_waitingFireRate);
+        }
+        
     }
 
     public virtual IEnumerator Reload()
     {
-        b_isReloading = true;
-        yield return new WaitForSeconds(_reloadTime);
-        b_isReloading = false;
-        _ammo = _maxAmmo;
+        if (CanShoot(false) && _ammo != _maxAmmo)
+        {
+            b_isReloading = true;
+            yield return new WaitForSeconds(_reloadTime);
+            b_isReloading = false;
+            _ammo = _maxAmmo;
+        }
     }
 
     public virtual IEnumerator WaitForFireRate()
