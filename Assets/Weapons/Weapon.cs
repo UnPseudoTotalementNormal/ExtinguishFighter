@@ -27,6 +27,7 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Shoot")]
     [SerializeField] protected private float _damage;
+    [SerializeField] protected private float _maxRange;
     [SerializeField] protected private float _impactKnocback;
     [SerializeField] protected private float _ownKnockback;
     [SerializeField] protected private float _firingRate;
@@ -35,6 +36,10 @@ public abstract class Weapon : MonoBehaviour
     [Header("Misc")]
     [SerializeField] protected private float _switchTime;
     [SerializeField] protected private float _unswitchTime;
+
+    [Header("Sfx")]
+    [SerializeField] protected private AudioClip _shootSound;
+    [SerializeField] protected private AudioClip _reloadSound;
 
 
     protected private bool b_isReloading = false;
@@ -55,6 +60,14 @@ public abstract class Weapon : MonoBehaviour
         if (CanShoot())
         {
             _ammo--;
+
+            if (_bulletType == BULLET_TYPE.RAYCAST && Physics.Raycast(_ownerRigidbody.transform.position, _ownerRigidbody.transform.forward, out RaycastHit hitInfo, _maxRange))
+            {
+                if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
+                {
+                    healthComponent.ModifyHealth(-_damage);
+                }
+            }
 
             _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
             StartCoroutine(WaitForFireRate());

@@ -9,6 +9,14 @@ public class Shotgun : Weapon
         {
             _ammo--;
 
+            if (Physics.Raycast(_ownerRigidbody.transform.position, _ownerRigidbody.transform.forward, out RaycastHit hitInfo,_maxRange))
+            {
+                if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
+                {
+                    healthComponent.ModifyHealth(-_damage);
+                }
+            }
+
             _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
             StartCoroutine(WaitForFireRate());
 
