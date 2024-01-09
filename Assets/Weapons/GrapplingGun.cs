@@ -9,11 +9,15 @@ public class GrapplingGun : Weapon
     [SerializeField] float _grapplingForce;
     [SerializeField] float _grapplingMaxForce;
     [SerializeField] float _grapplingSideBrakeForce;
+    [SerializeField] float _grapplingPullForce; //happens when you left click and release instantly
+    [SerializeField] float _grapplingPullSideBrakeForce;
+    [SerializeField] float _grapplingPullTimeTreshold; //time until pull isn't available
 
     private RaycastHit _grapplingHitInfo;
     private bool b_grappling = false;
     private bool b_swinging = false;
     private float _oldHookDistance;
+    private float _grapplingTime; //time since you're in grappling mode
 
     private LineRenderer _lineRenderer;
     private Transform _canonPosition;
@@ -68,6 +72,7 @@ public class GrapplingGun : Weapon
             {
                 _ownerRigidbody.AddForce(-otherDirectionsSpeed.normalized * _grapplingSideBrakeForce, ForceMode.VelocityChange);
             }
+            _grapplingTime += Time.fixedDeltaTime;
         }
         else if (b_swinging)
         {
@@ -99,6 +104,7 @@ public class GrapplingGun : Weapon
         {
             b_swinging = false;
             b_grappling = true;
+            _grapplingTime = 0;
         }
         else if (CanShoot())
         {
@@ -114,6 +120,7 @@ public class GrapplingGun : Weapon
                 }
                 b_grappling = true;
                 _grapplingHitInfo = hitInfo;
+                _grapplingTime = 0;
             }
 
             if (_shootParticles)
@@ -129,6 +136,20 @@ public class GrapplingGun : Weapon
         {
             b_grappling = false;
             StartCoroutine(WaitForFireRate());
+            if (_grapplingTime <= _grapplingPullTimeTreshold)
+            {
+                float forwardSpeed = Vector3.Dot(_ownerRigidbody.velocity, transform.forward);
+                Vector3 otherDirectionsSpeed = _ownerRigidbody.velocity - (forwardSpeed * transform.forward);
+                if (forwardSpeed < _grapplingMaxForce)
+                {
+                    _ownerRigidbody.AddForce(_grapplingPullForce * transform.forward, ForceMode.VelocityChange);
+                }
+                if (forwardSpeed < 0)
+                {
+                    _ownerRigidbody.AddForce(-_ownerRigidbody.velocity.normalized * _grapplingPullSideBrakeForce, ForceMode.VelocityChange);
+                }
+            }
+            _grapplingTime = 0;
         }
     }
 
