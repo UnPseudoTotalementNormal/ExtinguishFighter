@@ -5379,8 +5379,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 959851617}
     - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _grapplingPullForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: _grapplingSideBrakeForce
       value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _grapplingPullTimeTreshold
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _grapplingPullSideBrakeForce
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5589883082423408754, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: m_CastShadows
