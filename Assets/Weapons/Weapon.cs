@@ -143,6 +143,8 @@ public abstract class Weapon : MonoBehaviour
             {
                 Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 10);
             }
+
+            transform.localRotation *= Quaternion.Euler(new Vector3(-50, 0, 0));
         }
     }
 
