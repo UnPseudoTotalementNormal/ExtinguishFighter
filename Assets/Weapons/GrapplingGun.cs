@@ -63,6 +63,7 @@ public class GrapplingGun : Weapon
             if (forwardSpeed < _grapplingMaxForce)
             {
                 _ownerRigidbody.AddForce(_grapplingForce * transform.forward, ForceMode.VelocityChange);
+                _ownerRigidbody.AddTorque(forwardSpeed/500 * transform.right, ForceMode.VelocityChange);
             }
             if (forwardSpeed < 0)
             {

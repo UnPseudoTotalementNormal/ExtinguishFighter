@@ -647,20 +647,22 @@ MonoBehaviour:
   _ammo: 8
   _maxAmmo: 8
   _reloadTime: 1.5
-  _damage: 25
-  _maxRange: 80
+  _damage: 1000
+  _maxRange: 1000
   _impactKnocback: 2
-  _ownKnockback: 0.5
-  _ownKnockbackTorque: 10
+  _ownKnockback: 10
+  _ownKnockbackTorque: 40
   _firingRate: 0.8
   _recoilVisualForce: 15
   _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
-  _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
+  _impactParticles: {fileID: 8692018795588631814, guid: 69f307e9cdcec0f4d9ca56c2de4e0775, type: 3}
   _switchTime: 0.1
   _unswitchTime: 0.1
-  _shootSound: {fileID: 0}
-  _reloadSound: {fileID: 0}
+  _shootSound: {fileID: 8300000, guid: 5db4fc54c84f9194ba13a65dd8b9cb0b, type: 3}
+  _reloadSound: {fileID: 8300000, guid: 58bb2d9a70af04a40a2e3a029600aa37, type: 3}
   _holdingSound: {fileID: 1542745802551295124}
+  _switchingSound: {fileID: 8300000, guid: c15d42c5312dcca478f8de3428e1be87, type: 3}
+  _unswitchingSound: {fileID: 8300000, guid: b0d31f3b459e1594a90e2e322a1bc9ea, type: 3}
   _aimingFov: 10
 --- !u!1 &2841289365844614141
 GameObject:
@@ -801,8 +803,8 @@ Transform:
   m_GameObject: {fileID: 3006684795804220500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.35, y: -0.18, z: -1.55}
-  m_LocalScale: {x: 2.18, y: 2.18, z: 2.18}
+  m_LocalPosition: {x: 6.43, y: -1.34, z: -5.38}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 643680889870355060}
