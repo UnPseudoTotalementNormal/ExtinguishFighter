@@ -3019,8 +3019,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8769233943058262576}
   - {fileID: 2118110080}
+  - {fileID: 8769233943058262576}
   m_Father: {fileID: 1157170807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &995575790
@@ -5353,10 +5353,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Double-barrel_gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6370851276827399885, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
       propertyPath: _ownerRigidbody
       value: 
       objectReference: {fileID: 959851617}
+    - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
+      propertyPath: _recoilVisualForce
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5378,6 +5386,10 @@ PrefabInstance:
       propertyPath: _ownerRigidbody
       value: 
       objectReference: {fileID: 959851617}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _recoilVisualForce
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: _grapplingPullForce
       value: 4
@@ -5509,6 +5521,10 @@ PrefabInstance:
     - target: {fileID: 6183842689164604300, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: m_Name
       value: SciFiHandGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183842689164604300, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6186625083252020164, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: m_LocalPosition.x

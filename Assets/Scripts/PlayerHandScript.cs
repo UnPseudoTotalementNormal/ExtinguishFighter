@@ -12,6 +12,30 @@ public class PlayerHandScript : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        DeactivateAllWeapons();
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void Update()
+    {
+        SwitchWeaponWithHotkey();
+    }
+
+    private void DeactivateAllWeapons()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            var childI = transform.GetChild(i);
+            if (childI.gameObject.activeSelf && childI.TryGetComponent<Weapon>(out Weapon weaponComponent))
+            {
+                childI.gameObject.SetActive(false);
+            }
+        }
+        return;
+    }
+
     public Weapon GetCurrentWeapon()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -23,6 +47,20 @@ public class PlayerHandScript : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void SwitchWeaponWithHotkey()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) StartCoroutine(SwitchWeapon(0));
+        if (Input.GetKeyDown(KeyCode.Alpha2)) StartCoroutine(SwitchWeapon(1));
+        if (Input.GetKeyDown(KeyCode.Alpha3)) StartCoroutine(SwitchWeapon(2));
+        if (Input.GetKeyDown(KeyCode.Alpha4)) StartCoroutine(SwitchWeapon(3));
+        if (Input.GetKeyDown(KeyCode.Alpha5)) StartCoroutine(SwitchWeapon(4));
+        if (Input.GetKeyDown(KeyCode.Alpha6)) StartCoroutine(SwitchWeapon(5));
+        if (Input.GetKeyDown(KeyCode.Alpha7)) StartCoroutine(SwitchWeapon(6));
+        if (Input.GetKeyDown(KeyCode.Alpha8)) StartCoroutine(SwitchWeapon(7));
+        if (Input.GetKeyDown(KeyCode.Alpha9)) StartCoroutine(SwitchWeapon(8));
+        if (Input.GetKeyDown(KeyCode.Alpha0)) StartCoroutine(SwitchWeapon(9));
     }
 
     private IEnumerator SwitchWeapon(int toWeaponIndex)

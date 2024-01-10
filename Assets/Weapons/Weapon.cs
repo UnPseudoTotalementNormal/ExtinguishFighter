@@ -34,6 +34,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private float _impactKnocback;
     [SerializeField] protected private float _ownKnockback;
     [SerializeField] protected private float _firingRate;
+    [SerializeField] protected private float _recoilVisualForce;
     [SerializeField] protected private GameObject _shootParticles;
     [SerializeField] protected private GameObject _impactParticles;
 
@@ -144,7 +145,7 @@ public abstract class Weapon : MonoBehaviour
                 Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 10);
             }
 
-            transform.localRotation *= Quaternion.Euler(new Vector3(-50, 0, 0));
+            transform.localRotation *= Quaternion.Euler(new Vector3(-_recoilVisualForce, 0, 0));
         }
     }
 
