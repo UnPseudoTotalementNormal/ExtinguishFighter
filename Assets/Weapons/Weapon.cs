@@ -33,6 +33,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private float _maxRange;
     [SerializeField] protected private float _impactKnocback;
     [SerializeField] protected private float _ownKnockback;
+    [SerializeField] protected private float _ownKnockbackTorque;
     [SerializeField] protected private float _firingRate;
     [SerializeField] protected private float _recoilVisualForce;
     [SerializeField] protected private GameObject _shootParticles;
@@ -45,6 +46,9 @@ public abstract class Weapon : MonoBehaviour
     [Header("Sfx")]
     [SerializeField] protected private AudioClip _shootSound;
     [SerializeField] protected private AudioClip _reloadSound;
+    [SerializeField] protected private AudioSource _holdingSound;
+    [SerializeField] protected private AudioClip _switchingSound;
+    [SerializeField] protected private AudioClip _unswitchingSound;
 
     protected private bool b_automaticShooting = false;
     protected private bool b_isReloading = false;
@@ -68,7 +72,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Update()
     {
         CalculateWeaponRotationOffset();
-        if (b_automaticShooting)
+        if (b_automaticShooting && _shootType == SHOOT_TYPE.AUTOMATIC)
         {
             Shoot();
         }
@@ -110,6 +114,12 @@ public abstract class Weapon : MonoBehaviour
         if (switchingOffset) TransformToOffset(switchingOffset, false);
 
         gameObject.SetActive(true);
+
+        CustomAudio newAudio = new CustomAudio();
+        newAudio.AudioClip = _switchingSound;
+        SoundSystem.Instance.Play(newAudio);
+        if (_holdingSound) _holdingSound.Play();
+
         b_hasSwitched = false;
         yield return new WaitForSeconds(SwitchTime);
         b_hasSwitched = true;
@@ -117,10 +127,16 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual IEnumerator Unswitching()
     {
+        CustomAudio newAudio = new CustomAudio();
+        newAudio.AudioClip = _unswitchingSound;
+        SoundSystem.Instance.Play(newAudio);
+
         b_hasSwitched = false;
         yield return new WaitForSeconds(UnswitchTime);
         b_hasSwitched = true;
         gameObject.SetActive(false);
+
+        if (_holdingSound) _holdingSound.Stop();
     }
 
     public virtual void Shoot()
@@ -151,6 +167,11 @@ public abstract class Weapon : MonoBehaviour
             }
 
             transform.localRotation *= Quaternion.Euler(new Vector3(-_recoilVisualForce, 0, 0));
+            _ownerRigidbody.AddTorque(-_ownKnockbackTorque * _ownerRigidbody.transform.right, ForceMode.VelocityChange);
+
+            CustomAudio newAudio = new CustomAudio();
+            newAudio.AudioClip = _shootSound;
+            SoundSystem.Instance.Play(newAudio);
         }
     }
 
@@ -180,6 +201,10 @@ public abstract class Weapon : MonoBehaviour
     {
         if (CanShoot(false) && _ammo != _maxAmmo)
         {
+            CustomAudio newAudio = new CustomAudio();
+            newAudio.AudioClip = _reloadSound;
+            SoundSystem.Instance.Play(newAudio);
+
             b_isReloading = true;
             yield return new WaitForSeconds(_reloadTime);
             b_isReloading = false;

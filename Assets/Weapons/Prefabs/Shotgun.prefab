@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 1096318399355685499}
   - component: {fileID: 8677705087111075829}
   m_Layer: 0
-  m_Name: Double-barrel_gun
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

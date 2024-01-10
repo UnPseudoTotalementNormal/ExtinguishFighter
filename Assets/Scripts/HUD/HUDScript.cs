@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDScript : MonoBehaviour
 {
-    private PlayerHandScript _playerHandScript;
+    public static HUDScript Instance;
 
+    private PlayerHandScript _playerHandScript;
     [SerializeField] private TextMeshProUGUI _ammoText;
+    [SerializeField] private Image _crosshair;
+    [SerializeField] private Image _sniperCrosshair;
+
+    public Image Crosshair { get { return _crosshair; } }
+    public Image SniperCrosshair { get { return _sniperCrosshair; } }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ammoText: {fileID: 1746497276}
+  _crosshair: {fileID: 1544850612}
 --- !u!1 &151152326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,7 +4261,7 @@ GameObject:
   - component: {fileID: 1544850613}
   - component: {fileID: 1544850612}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5308,6 +5309,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4261485683945991530, guid: 177505a8ce902d645842803e58382f34, type: 3}
   m_PrefabInstance: {fileID: 1701473969089921064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132149592575303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4121175832918113992, guid: 177505a8ce902d645842803e58382f34, type: 3}
+  m_PrefabInstance: {fileID: 1701473969089921064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132149592575304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149592575303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3536ade9d89b1ea48ad0ce3d92d36d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ownerRigidbody: {fileID: 959851617}
+  _bulletType: 0
+  _shootType: 1
+  _ammo: 8
+  _maxAmmo: 8
+  _reloadTime: 1.5
+  _damage: 25
+  _maxRange: 80
+  _impactKnocback: 2
+  _ownKnockback: 0.5
+  _firingRate: 0.8
+  _recoilVisualForce: 15
+  _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
+  _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
+  _switchTime: 0.1
+  _unswitchTime: 0.1
+  _shootSound: {fileID: 0}
+  _reloadSound: {fileID: 0}
+  _aimingFov: 10
 --- !u!1001 &1701473969089921064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5364,10 +5401,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 350548411901214657, guid: 177505a8ce902d645842803e58382f34, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4121175832918113992, guid: 177505a8ce902d645842803e58382f34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919132149592575304}
   m_SourcePrefab: {fileID: 100100000, guid: 177505a8ce902d645842803e58382f34, type: 3}
 --- !u!1001 &3078695805575718222
 PrefabInstance:
