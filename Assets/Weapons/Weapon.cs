@@ -46,7 +46,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private AudioClip _shootSound;
     [SerializeField] protected private AudioClip _reloadSound;
 
-
+    protected private bool b_automaticShooting = false;
     protected private bool b_isReloading = false;
     protected private bool b_waitingFireRate = false;
     protected private bool b_hasSwitched = true;
@@ -68,6 +68,10 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Update()
     {
         CalculateWeaponRotationOffset();
+        if (b_automaticShooting)
+        {
+            Shoot();
+        }
     }
 
     protected virtual private void CalculateWeaponRotationOffset()
@@ -121,6 +125,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Shoot()
     {
+        b_automaticShooting = true;
         if (CanShoot())
         {
             _ammo--;
@@ -149,7 +154,10 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public virtual void StopShooting() { }
+    public virtual void StopShooting() 
+    { 
+        b_automaticShooting = false;
+    }
 
     public virtual void AlternateShoot() { }
 

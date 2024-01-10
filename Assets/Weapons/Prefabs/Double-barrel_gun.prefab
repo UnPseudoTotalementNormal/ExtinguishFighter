@@ -320,6 +320,7 @@ MonoBehaviour:
   _impactKnocback: 2
   _ownKnockback: 4
   _firingRate: 0
+  _recoilVisualForce: 50
   _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
   _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
   _switchTime: 0.1
