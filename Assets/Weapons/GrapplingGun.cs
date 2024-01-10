@@ -193,4 +193,13 @@ public class GrapplingGun : Weapon
             b_swinging = false;
         }
     }
+
+    public override IEnumerator Reload()
+    {
+        if (!b_swinging && !b_swinging)
+        {
+            yield return base.Reload();
+        }
+        yield return null;
+    }
 }
