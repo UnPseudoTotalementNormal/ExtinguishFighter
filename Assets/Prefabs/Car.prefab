@@ -1060,12 +1060,12 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.033333335
-      inSlope: -0.033346657
-      outSlope: -0.033346657
+      value: 0
+      inSlope: 0.0371283
+      outSlope: 0.0371283
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.42115486
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1254,7 +1254,7 @@ Rigidbody:
     m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
