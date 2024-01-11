@@ -171,6 +171,7 @@ public abstract class Weapon : MonoBehaviour
 
             CustomAudio newAudio = new CustomAudio();
             newAudio.AudioClip = _shootSound;
+            newAudio.b_RandomPitch = true;
             SoundSystem.Instance.Play(newAudio);
         }
     }

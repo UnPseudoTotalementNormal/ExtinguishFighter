@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     private enum STATE
     {
         NORMAL,
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _rollspeed = 0.1f;
     [SerializeField] private float _acceleration = 2f;
     [SerializeField] private float _deceleration = 0.15f;
+    [SerializeField] private float _maxAccelerationSpeed = 5f;
 
     [SerializeField] private float _mouseSensitivity = 2f;
     [SerializeField] private float _rotationdeceleration = 1f;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -73,8 +77,14 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        _rigidbody.velocity += _transform.forward * _direction.y * _acceleration * Time.fixedDeltaTime;
-        _rigidbody.velocity += _transform.right * _direction.x * _acceleration * Time.fixedDeltaTime;
+        if (Vector3.Dot(_rigidbody.velocity, transform.forward * _direction.y) < _maxAccelerationSpeed)
+        {
+            _rigidbody.velocity += _transform.forward * _direction.y * _acceleration * Time.fixedDeltaTime;
+        }
+        if (Vector3.Dot(_rigidbody.velocity, transform.right * _direction.x) < _maxAccelerationSpeed)
+        {
+            _rigidbody.velocity += _transform.right * _direction.x * _acceleration * Time.fixedDeltaTime;
+        }
     }
 
     private void RotationVel()

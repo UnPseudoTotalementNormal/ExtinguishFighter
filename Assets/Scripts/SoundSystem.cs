@@ -26,6 +26,10 @@ public class SoundSystem : MonoBehaviour
         {
             audioSource.maxDistance = 9999999999;
         }
+        if (newCustomAudio.b_RandomPitch)
+        {
+            audioSource.pitch = 1 + Random.Range(-newCustomAudio.MaxPitchRandomness, newCustomAudio.MaxPitchRandomness);
+        }
         audioSource.playOnAwake = true;
         return Instantiate(newObject, newCustomAudio.AudioPosition, Quaternion.identity).gameObject;
     }
