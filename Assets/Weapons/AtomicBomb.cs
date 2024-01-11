@@ -7,7 +7,7 @@ public class AtomicBomb : Weapon
     private float _closeTimer = 0;
     private float _startFlagAt = 4;
     private float _endFlagAt = 18;
-    private float _closingAt = 20;
+    private float _closingAt = 25;
     public override void Shoot()
     {
         if (_shootSound)

@@ -1910,7 +1910,7 @@ Transform:
   m_GameObject: {fileID: 5921222194178158395}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.261, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2275,7 +2275,7 @@ Transform:
   m_GameObject: {fileID: 7165897792935761265}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.592, y: 0, z: 0}
+  m_LocalPosition: {x: 0.643, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2884,12 +2884,32 @@ PrefabInstance:
       value: I Drive
       objectReference: {fileID: 0}
     - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _firingRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 8806753718289634329, guid: d468310cfaf4a4e4a8d922239d1322b4, type: 3}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _ownKnockback
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _holdingVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
       propertyPath: _ownerRigidbody
       value: 
       objectReference: {fileID: 5973956342081750766}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _projectileThrowForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7533455304802688635, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.892
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7533455304802688635, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3145,9 +3165,21 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _ammo
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _maxAmmo
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: _ownerRigidbody
       value: 
       objectReference: {fileID: 5973956342081750766}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _grapplingPullSideBrakeForce
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6183469396512328848, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: m_Layer
       value: 6
