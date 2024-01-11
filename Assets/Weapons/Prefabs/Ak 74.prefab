@@ -766,14 +766,23 @@ MonoBehaviour:
   _maxRange: 80
   _impactKnocback: 2
   _ownKnockback: 0.1
+  _ownKnockbackTorque: 0
   _firingRate: 0.1
   _recoilVisualForce: 15
   _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
   _impactParticles: {fileID: 8692018795588631814, guid: 9900ceadc5c2009439475c8726d860e9, type: 3}
   _switchTime: 0.1
   _unswitchTime: 0.1
-  _shootSound: {fileID: 0}
+  _shootSound: {fileID: 8300000, guid: ac3f88096f1528c45ac9c0a1b713e309, type: 3}
+  _shootVolume: 1
   _reloadSound: {fileID: 0}
+  _reloadVolume: 1
+  _holdingSound: {fileID: 0}
+  _holdingVolume: 1
+  _switchingSound: {fileID: 0}
+  _switchingVolume: 1
+  _unswitchingSound: {fileID: 0}
+  _unswitchingVolume: 1
 --- !u!1 &5047773580984200032
 GameObject:
   m_ObjectHideFlags: 0

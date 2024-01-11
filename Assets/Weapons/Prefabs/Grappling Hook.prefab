@@ -271,7 +271,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1244390726855398, guid: 392a05bd229c33043ae112a856120172, type: 3}
       propertyPath: m_Name
-      value: SciFiHandGun Variant
+      value: Grappling Hook
       objectReference: {fileID: 0}
     - target: {fileID: 1244390726855398, guid: 392a05bd229c33043ae112a856120172, type: 3}
       propertyPath: m_IsActive
@@ -396,6 +396,7 @@ MonoBehaviour:
   _maxRange: 40
   _impactKnocback: 0
   _ownKnockback: -0.03
+  _ownKnockbackTorque: 0
   _firingRate: 0.1
   _recoilVisualForce: 50
   _shootParticles: {fileID: 0}
@@ -403,7 +404,15 @@ MonoBehaviour:
   _switchTime: 0.1
   _unswitchTime: 0.1
   _shootSound: {fileID: 0}
+  _shootVolume: 1
   _reloadSound: {fileID: 0}
+  _reloadVolume: 1
+  _holdingSound: {fileID: 0}
+  _holdingVolume: 1
+  _switchingSound: {fileID: 0}
+  _switchingVolume: 1
+  _unswitchingSound: {fileID: 0}
+  _unswitchingVolume: 1
   _grapplingForce: 0.12
   _grapplingMaxForce: 30
   _grapplingSideBrakeForce: 0.06

@@ -608,7 +608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4032289267301297829
 Transform:
   m_ObjectHideFlags: 0
@@ -650,19 +650,24 @@ MonoBehaviour:
   _damage: 1000
   _maxRange: 1000
   _impactKnocback: 2
-  _ownKnockback: 10
+  _ownKnockback: 5
   _ownKnockbackTorque: 40
   _firingRate: 0.8
-  _recoilVisualForce: 15
+  _recoilVisualForce: 75
   _shootParticles: {fileID: 2583554172992408268, guid: 605d26d78268e1a4891ee4d2ecbfd6fd, type: 3}
   _impactParticles: {fileID: 8692018795588631814, guid: 69f307e9cdcec0f4d9ca56c2de4e0775, type: 3}
   _switchTime: 0.1
   _unswitchTime: 0.1
   _shootSound: {fileID: 8300000, guid: 5db4fc54c84f9194ba13a65dd8b9cb0b, type: 3}
+  _shootVolume: 1
   _reloadSound: {fileID: 8300000, guid: 58bb2d9a70af04a40a2e3a029600aa37, type: 3}
+  _reloadVolume: 1
   _holdingSound: {fileID: 1542745802551295124}
+  _holdingVolume: 1
   _switchingSound: {fileID: 8300000, guid: c15d42c5312dcca478f8de3428e1be87, type: 3}
+  _switchingVolume: 1
   _unswitchingSound: {fileID: 8300000, guid: b0d31f3b459e1594a90e2e322a1bc9ea, type: 3}
+  _unswitchingVolume: 1
   _aimingFov: 10
 --- !u!1 &2841289365844614141
 GameObject:

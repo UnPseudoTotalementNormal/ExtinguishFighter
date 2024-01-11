@@ -45,10 +45,15 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("Sfx")]
     [SerializeField] protected private AudioClip _shootSound;
+    [SerializeField, Range(0, 1)] protected private float _shootVolume = 1;
     [SerializeField] protected private AudioClip _reloadSound;
+    [SerializeField, Range(0, 1)] protected private float _reloadVolume = 1;
     [SerializeField] protected private AudioSource _holdingSound;
+    [SerializeField, Range(0, 1)] protected private float _holdingVolume = 1;
     [SerializeField] protected private AudioClip _switchingSound;
+    [SerializeField, Range(0, 1)] protected private float _switchingVolume = 1;
     [SerializeField] protected private AudioClip _unswitchingSound;
+    [SerializeField, Range(0, 1)] protected private float _unswitchingVolume = 1;
 
     protected private bool b_automaticShooting = false;
     protected private bool b_isReloading = false;
@@ -117,8 +122,10 @@ public abstract class Weapon : MonoBehaviour
 
         CustomAudio newAudio = new CustomAudio();
         newAudio.AudioClip = _switchingSound;
+        newAudio.Volume = _switchingVolume;
         SoundSystem.Instance.Play(newAudio);
-        if (_holdingSound) _holdingSound.Play();
+        
+        if (_holdingSound) { _holdingSound.Play(); _holdingSound.volume = _holdingVolume; }
 
         b_hasSwitched = false;
         yield return new WaitForSeconds(SwitchTime);
@@ -129,6 +136,7 @@ public abstract class Weapon : MonoBehaviour
     {
         CustomAudio newAudio = new CustomAudio();
         newAudio.AudioClip = _unswitchingSound;
+        newAudio.Volume = _unswitchingVolume;
         SoundSystem.Instance.Play(newAudio);
 
         b_hasSwitched = false;
@@ -171,6 +179,7 @@ public abstract class Weapon : MonoBehaviour
 
             CustomAudio newAudio = new CustomAudio();
             newAudio.AudioClip = _shootSound;
+            newAudio.Volume = _shootVolume;
             newAudio.b_RandomPitch = true;
             SoundSystem.Instance.Play(newAudio);
         }
@@ -204,6 +213,7 @@ public abstract class Weapon : MonoBehaviour
         {
             CustomAudio newAudio = new CustomAudio();
             newAudio.AudioClip = _reloadSound;
+            newAudio.Volume = _reloadVolume;
             SoundSystem.Instance.Play(newAudio);
 
             b_isReloading = true;

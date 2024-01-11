@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4261485683945991530
 Transform:
   m_ObjectHideFlags: 0
@@ -810,8 +810,15 @@ MonoBehaviour:
   _switchTime: 0.1
   _unswitchTime: 0.1
   _shootSound: {fileID: 0}
+  _shootVolume: 1
   _reloadSound: {fileID: 0}
+  _reloadVolume: 1
   _holdingSound: {fileID: 0}
+  _holdingVolume: 1
+  _switchingSound: {fileID: 0}
+  _switchingVolume: 1
+  _unswitchingSound: {fileID: 0}
+  _unswitchingVolume: 1
   _aimingFov: 10
 --- !u!1 &4347748131255015159
 GameObject:
