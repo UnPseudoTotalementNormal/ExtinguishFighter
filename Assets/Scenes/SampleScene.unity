@@ -4446,9 +4446,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3043715865815948305, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _ammo
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043715865815948305, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _maxAmmo
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7015898933879302685, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560501852516959515, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _firingRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560501852516959515, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 8806753718289634329, guid: d468310cfaf4a4e4a8d922239d1322b4, type: 3}
+    - target: {fileID: 7560501852516959515, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _ownKnockback
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560501852516959515, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _holdingVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560501852516959515, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _projectileThrowForce
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7838212385904283591, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_LocalPosition.x

@@ -28,6 +28,10 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected private int _maxAmmo;
     [SerializeField] protected private float _reloadTime;
 
+    [Header("Projectile")]
+    [SerializeField] protected private GameObject _projectile;
+    [SerializeField] protected private float _projectileThrowForce;
+
     [Header("Shoot")]
     [SerializeField] protected private float _damage;
     [SerializeField] protected private float _maxRange;
@@ -154,21 +158,35 @@ public abstract class Weapon : MonoBehaviour
         {
             _ammo--;
 
-            if (_bulletType == BULLET_TYPE.RAYCAST && Physics.Raycast(_ownerRigidbody.transform.position, _ownerRigidbody.transform.forward, out RaycastHit hitInfo, _maxRange))
+            switch (_bulletType)
             {
-                if (_impactParticles)
-                {
-                    Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
-                }
-                if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
-                {
-                    healthComponent.ModifyHealth(-_damage);
-                }
-                if (hitInfo.collider.transform.TryGetComponent<Rigidbody>(out Rigidbody colliderRb))
-                {
-                    colliderRb.AddForceAtPosition(-(_ownerRigidbody.position - hitInfo.point).normalized * _impactKnocback, hitInfo.point,ForceMode.Impulse);
-                }
+                case BULLET_TYPE.RAYCAST:
+                    if (Physics.Raycast(_ownerRigidbody.transform.position, _ownerRigidbody.transform.forward, out RaycastHit hitInfo, _maxRange))
+                    {
+                        if (_impactParticles)
+                        {
+                            Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
+                        }
+                        if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
+                        {
+                            healthComponent.ModifyHealth(-_damage);
+                        }
+                        if (hitInfo.collider.transform.TryGetComponent<Rigidbody>(out Rigidbody colliderRb))
+                        {
+                            colliderRb.AddForceAtPosition(-(_ownerRigidbody.position - hitInfo.point).normalized * _impactKnocback, hitInfo.point, ForceMode.Impulse);
+                        }
+                    }
+                    break;
+                case BULLET_TYPE.PROJECTILE: 
+                    if (_projectile)
+                    {
+                        GameObject newProjectile = Instantiate(_projectile, transform.position, _ownerRigidbody.rotation);
+                        newProjectile.GetComponent<Rigidbody>().AddForce(_projectileThrowForce * newProjectile.transform.forward, ForceMode.VelocityChange);
+                        StartCoroutine(RemoveLayerMaskIn(newProjectile.GetComponent<Rigidbody>(), 0.5f));
+                    }
+                    break;
             }
+            
 
             _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
 
@@ -188,6 +206,12 @@ public abstract class Weapon : MonoBehaviour
             newAudio.b_RandomPitch = true;
             SoundSystem.Instance.Play(newAudio);
         }
+    }
+
+    public virtual IEnumerator RemoveLayerMaskIn(Rigidbody body, float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        body.excludeLayers = new LayerMask();
     }
 
     public virtual void StopShooting() 
