@@ -164,9 +164,14 @@ public abstract class Weapon : MonoBehaviour
                 {
                     healthComponent.ModifyHealth(-_damage);
                 }
+                if (hitInfo.collider.transform.TryGetComponent<Rigidbody>(out Rigidbody colliderRb))
+                {
+                    colliderRb.AddForceAtPosition(-(_ownerRigidbody.position - hitInfo.point).normalized * _impactKnocback, hitInfo.point,ForceMode.Impulse);
+                }
             }
 
             _ownerRigidbody.AddForce(_ownKnockback * -_ownerRigidbody.transform.forward, ForceMode.VelocityChange);
+
             StartCoroutine(WaitForFireRate());
 
             if (_shootParticles)

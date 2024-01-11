@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,12 +13,18 @@ public class HUDScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _ammoText;
     [SerializeField] private TextMeshProUGUI _weaponText;
     [SerializeField] private TextMeshProUGUI _speedText;
+    [SerializeField] private TextMeshProUGUI _timerText;
 
     [SerializeField] private Image _crosshair;
     [SerializeField] private Image _sniperCrosshair;
 
+    [SerializeField] private GameObject _nuclearDeath;
+    [SerializeField] private Image _america;
+
     public Image Crosshair { get { return _crosshair; } }
     public Image SniperCrosshair { get { return _sniperCrosshair; } }
+    public GameObject NuclearDeath {  get { return _nuclearDeath; } }
+    public Image America { get { return _america; } }
 
     private void Awake()
     {
@@ -41,6 +48,8 @@ public class HUDScript : MonoBehaviour
             _weaponText.text = currentWeapon.name;
             _weaponText.alpha = 1;
         }
+
+        _timerText.text = "Timer: " + ((int)LevelTimer.Instance.Timer).ToString();
     }
 
     private void AmmoDisplay()
