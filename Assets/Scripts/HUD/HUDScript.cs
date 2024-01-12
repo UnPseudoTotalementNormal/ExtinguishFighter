@@ -11,6 +11,7 @@ public class HUDScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _weaponText;
     [SerializeField] private TextMeshProUGUI _speedText;
     [SerializeField] private TextMeshProUGUI _timerText;
+    [SerializeField] private TextMeshProUGUI _enemyText;
 
     [SerializeField] private Image _crosshair;
     [SerializeField] private Image _sniperCrosshair;
@@ -47,6 +48,12 @@ public class HUDScript : MonoBehaviour
         }
 
         _timerText.text = "Timer: " + ((int)LevelTimer.Instance.Timer).ToString();
+
+        if (EnemyCount.Instance)
+        {
+            _enemyText.text = "Enemy killed: " + EnemyCount.Instance.EnemyKilled.ToString() + "/" + EnemyCount.Instance.EnemyNumber.ToString();
+        }
+        
     }
 
     private void AmmoDisplay()
