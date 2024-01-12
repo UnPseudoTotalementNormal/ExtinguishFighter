@@ -12,8 +12,6 @@ public class ResultText : MonoBehaviour
         }
         float timeDone = CheckPointsHandler.Instance.Timer;
         float enemyKilled = EnemyCount.Instance.EnemyKilled;
-        print(PlayerPrefs.GetFloat("Timer"));
-        print(PlayerPrefs.GetFloat("Enemy"));
         if ((timeDone < PlayerPrefs.GetFloat("Timer") && enemyKilled >= PlayerPrefs.GetFloat("EnemyKilled")) || (enemyKilled > PlayerPrefs.GetFloat("EnemyKilled")))
         {
             SaveStats(timeDone, enemyKilled);
