@@ -72,6 +72,7 @@ public abstract class Weapon : MonoBehaviour
     public bool HasSwitched { get { return b_hasSwitched; } }
     public float SwitchTime { get { return _switchTime; } }
     public float UnswitchTime {  get { return _unswitchTime; } }
+    public AudioSource HoldingSound { get { return _holdingSound; } }
 
     protected virtual void Awake()
     {
