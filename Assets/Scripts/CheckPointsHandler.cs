@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckPointsHandler : MonoBehaviour
 {
     public static CheckPointsHandler Instance;
 
     [SerializeField] private List<CheckPoint> _checkPoints = new List<CheckPoint>();
+
+    public float Timer;
 
     private void Awake()
     {
@@ -27,7 +29,9 @@ public class CheckPointsHandler : MonoBehaviour
         int checkPointIndex = GetCheckPointIndex(checkPoint);
         if (checkPointIndex == _checkPoints.Count-1)
         {
-            print(LevelTimer.Instance.Timer);
+            Timer = LevelTimer.Instance.Timer;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.LoadScene("LevelComplete");
         }
         else
         {

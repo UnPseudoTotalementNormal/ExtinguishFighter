@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AtomicBomb : Weapon
@@ -10,6 +9,11 @@ public class AtomicBomb : Weapon
     private float _closingAt = 25;
     public override void Shoot()
     {
+        PlayerHandScript.Instance.enabled = false;
+        PlayerController.Instance.enabled = false;
+        Destroy(PlayerHandScript.Instance);
+        Destroy(PlayerController.Instance);
+
         if (_shootSound)
         {
             CustomAudio newAudio = new CustomAudio();
