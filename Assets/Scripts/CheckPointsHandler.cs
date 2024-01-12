@@ -24,6 +24,18 @@ public class CheckPointsHandler : MonoBehaviour
         _checkPoints[0].gameObject.SetActive(true);
     }
 
+    public CheckPoint GetCurrentCheckpoint()
+    {
+        foreach (var checkPoint in _checkPoints)
+        {
+            if (checkPoint.gameObject.activeSelf)
+            {
+                return checkPoint;
+            }
+        }
+        return null;
+    }
+
     public void EnteredCheckPoint(CheckPoint checkPoint)
     {
         int checkPointIndex = GetCheckPointIndex(checkPoint);

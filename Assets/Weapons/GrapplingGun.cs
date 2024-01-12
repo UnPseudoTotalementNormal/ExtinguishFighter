@@ -237,4 +237,11 @@ public class GrapplingGun : Weapon
         }
         yield return null;
     }
+
+    public override IEnumerator Unswitching()
+    {
+        b_swinging = false;
+        b_grappling = false;
+        return base.Unswitching();
+    }
 }
