@@ -1390,6 +1390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 540771878667789478, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2557182725545676161, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5723,6 +5727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732415723}
+  - component: {fileID: 732415724}
   - component: {fileID: 732415722}
   m_Layer: 0
   m_Name: Music
@@ -5842,6 +5847,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732415724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732415721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8aac8adabee4a41936371c64f9ba74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753566526
 GameObject:
   m_ObjectHideFlags: 0
