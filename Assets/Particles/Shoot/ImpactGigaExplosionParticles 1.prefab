@@ -9788,7 +9788,7 @@ GameObject:
   - component: {fileID: 6990401098146847208}
   - component: {fileID: 2935432005279596832}
   m_Layer: 0
-  m_Name: ImpactGigaExplosionParticles
+  m_Name: ImpactGigaExplosionParticles 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

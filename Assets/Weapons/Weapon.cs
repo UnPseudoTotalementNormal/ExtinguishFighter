@@ -166,7 +166,7 @@ public abstract class Weapon : MonoBehaviour
                     {
                         if (_impactParticles)
                         {
-                            Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
+                            Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 30);
                         }
                         if (hitInfo.collider.transform.TryGetComponent<HealthComponent>(out HealthComponent healthComponent))
                         {
@@ -195,7 +195,7 @@ public abstract class Weapon : MonoBehaviour
 
             if (_shootParticles)
             {
-                Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 10);
+                Destroy(Instantiate(_shootParticles, GetParticlesTransform().position, _shootParticles.transform.rotation * GetParticlesTransform().rotation), 30);
             }
 
             transform.localRotation *= Quaternion.Euler(new Vector3(-_recoilVisualForce, 0, 0));
