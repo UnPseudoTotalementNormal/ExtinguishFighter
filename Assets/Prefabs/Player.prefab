@@ -2792,6 +2792,14 @@ PrefabInstance:
       value: I Drive
       objectReference: {fileID: 0}
     - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006760064267972989, guid: 623e55f96f0794840a134d171558ea7c, type: 3}
       propertyPath: _ownerRigidbody
       value: 
       objectReference: {fileID: 5973956342081750766}
@@ -2998,8 +3006,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ca7510f776cf79b47abba65c1e1873f0, type: 3}
     - target: {fileID: 9071489801769843683, guid: 177505a8ce902d645842803e58382f34, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071489801769843683, guid: 177505a8ce902d645842803e58382f34, type: 3}
       propertyPath: _shootVolume
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071489801769843683, guid: 177505a8ce902d645842803e58382f34, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9071489801769843683, guid: 177505a8ce902d645842803e58382f34, type: 3}
       propertyPath: _impactKnocback
@@ -3054,6 +3070,14 @@ PrefabInstance:
     - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: _maxAmmo
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4280258041598034817, guid: 563023bdf07e15c4cae8775d5badd9b6, type: 3}
       propertyPath: _ownerRigidbody
@@ -3224,6 +3248,14 @@ PrefabInstance:
     - target: {fileID: 3201825594395252640, guid: 6085f4cbee8dc494cbb79d8157a299f9, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341541582890465677, guid: 6085f4cbee8dc494cbb79d8157a299f9, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341541582890465677, guid: 6085f4cbee8dc494cbb79d8157a299f9, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3341541582890465677, guid: 6085f4cbee8dc494cbb79d8157a299f9, type: 3}
       propertyPath: _impactKnocback
@@ -3456,8 +3488,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8533238305124368701, guid: 9f7e9d2d6ea98454ea52aee273f96e2a, type: 3}
+      propertyPath: _damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533238305124368701, guid: 9f7e9d2d6ea98454ea52aee273f96e2a, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533238305124368701, guid: 9f7e9d2d6ea98454ea52aee273f96e2a, type: 3}
       propertyPath: _shootVolume
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533238305124368701, guid: 9f7e9d2d6ea98454ea52aee273f96e2a, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8533238305124368701, guid: 9f7e9d2d6ea98454ea52aee273f96e2a, type: 3}
       propertyPath: _ownerRigidbody
@@ -3531,6 +3575,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015453494243807726, guid: 96e3dcf97a637f64db66c53014a47005, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131315611554335731, guid: 96e3dcf97a637f64db66c53014a47005, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131315611554335731, guid: 96e3dcf97a637f64db66c53014a47005, type: 3}
+      propertyPath: _unswitchTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8131315611554335731, guid: 96e3dcf97a637f64db66c53014a47005, type: 3}
@@ -3636,6 +3688,14 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677705087111075829, guid: 733622b1b9380124c951f3917b1765d4, type: 3}
       propertyPath: _impactKnocback
       value: 5
       objectReference: {fileID: 0}
@@ -3702,13 +3762,29 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
+      propertyPath: _firingRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
+      propertyPath: _reloadTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
       propertyPath: _shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 5e000f63cdd7e4b4297a1c5340c18edf, type: 3}
     - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
+      propertyPath: _switchTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
       propertyPath: _reloadSound
       value: 
       objectReference: {fileID: 8300000, guid: 7d8751b2948183842b8128ba3d21bf50, type: 3}
+    - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
+      propertyPath: _unswitchTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2595492699102700645, guid: db0192e9f12e42148b56352e11f07ffd, type: 3}
       propertyPath: _holdingVolume
       value: 0.707

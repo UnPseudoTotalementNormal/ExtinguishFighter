@@ -39,7 +39,6 @@ public class GrapplingGun : Weapon
         {
             if (b_grapplingToRigidbody && _grapplingAttachedRigidbody)
             {
-                print(_grapplingAttachedRigidbody.transform.position);
                 if (Physics.Raycast(_ownerRigidbody.transform.position, 
                     -(_ownerRigidbody.transform.position - _grapplingAttachedRigidbody.transform.position).normalized, out RaycastHit hitInfo, _maxRange))
                 {

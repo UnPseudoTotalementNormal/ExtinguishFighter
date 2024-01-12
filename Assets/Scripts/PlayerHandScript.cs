@@ -53,16 +53,56 @@ public class PlayerHandScript : MonoBehaviour
         Weapon currentWeapon = GetCurrentWeapon();
         if (currentWeapon && currentWeapon.HasSwitched && currentWeapon.CanShoot(false))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) StartCoroutine(SwitchWeapon(0));
-            if (Input.GetKeyDown(KeyCode.Alpha2)) StartCoroutine(SwitchWeapon(1));
-            if (Input.GetKeyDown(KeyCode.Alpha3)) StartCoroutine(SwitchWeapon(2));
-            if (Input.GetKeyDown(KeyCode.Alpha4)) StartCoroutine(SwitchWeapon(3));
-            if (Input.GetKeyDown(KeyCode.Alpha5)) StartCoroutine(SwitchWeapon(4));
-            if (Input.GetKeyDown(KeyCode.Alpha6)) StartCoroutine(SwitchWeapon(5));
-            if (Input.GetKeyDown(KeyCode.Alpha7)) StartCoroutine(SwitchWeapon(6));
-            if (Input.GetKeyDown(KeyCode.Alpha8)) StartCoroutine(SwitchWeapon(7));
-            if (Input.GetKeyDown(KeyCode.Alpha9)) StartCoroutine(SwitchWeapon(8));
-            if (Input.GetKeyDown(KeyCode.Alpha0)) StartCoroutine(SwitchWeapon(9));
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartCoroutine(SwitchWeapon(0));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                StartCoroutine(SwitchWeapon(1));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) 
+            { 
+                StartCoroutine(SwitchWeapon(2)); 
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                StartCoroutine(SwitchWeapon(3));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                StartCoroutine(SwitchWeapon(4));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                StartCoroutine(SwitchWeapon(5));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                StartCoroutine(SwitchWeapon(6));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                StartCoroutine(SwitchWeapon(7));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                StartCoroutine(SwitchWeapon(8));
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                StartCoroutine(SwitchWeapon(9));
+                return;
+            }
         }
     }
 
