@@ -40,7 +40,7 @@ public class HUDScript : MonoBehaviour
     {
         AmmoDisplay();
         _weaponText.alpha = Mathf.Lerp(_weaponText.alpha, 0, 1 * Time.deltaTime);
-        _speedText.text = ((int)(PlayerController.Instance.GetComponent<Rigidbody>().velocity.magnitude*5)).ToString() + " km/h";
+        _speedText.text = ((PlayerController.Instance.GetComponent<Rigidbody>().velocity.magnitude*5)).ToString("0.00") + " km/h";
 
         Weapon currentWeapon = PlayerHandScript.Instance.GetCurrentWeapon();
         if (currentWeapon && _weaponText.text != currentWeapon.name)

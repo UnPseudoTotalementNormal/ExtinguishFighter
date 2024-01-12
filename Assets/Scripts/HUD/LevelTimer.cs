@@ -18,7 +18,10 @@ public class LevelTimer : MonoBehaviour
 
     private void Update()
     {
-        _timer += Time.deltaTime;
+        if (b_isPlaying)
+        {
+            _timer += Time.deltaTime;
+        }
     }
 
     public void RestartTimer()
