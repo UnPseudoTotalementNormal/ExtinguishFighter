@@ -13,6 +13,7 @@ public class AtomicBomb : Weapon
         PlayerController.Instance.enabled = false;
         Destroy(PlayerHandScript.Instance);
         Destroy(PlayerController.Instance);
+        Destroy(PauseScript.Instance);
 
         if (_shootSound)
         {
