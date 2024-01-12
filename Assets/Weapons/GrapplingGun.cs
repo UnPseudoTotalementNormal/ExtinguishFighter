@@ -18,6 +18,8 @@ public class GrapplingGun : Weapon
     private bool b_swinging = false;
     private float _oldHookDistance;
     private float _grapplingTime; //time since you're in grappling mode
+    private bool b_grapplingToRigidbody = false;
+    private Rigidbody _grapplingAttachedRigidbody;
 
     private LineRenderer _lineRenderer;
     private Transform _canonPosition;
@@ -35,6 +37,25 @@ public class GrapplingGun : Weapon
         _lineRenderer.transform.eulerAngles = Vector3.zero;
         if (b_grappling || b_swinging)
         {
+            if (b_grapplingToRigidbody && _grapplingAttachedRigidbody)
+            {
+                print(_grapplingAttachedRigidbody.transform.position);
+                if (Physics.Raycast(_ownerRigidbody.transform.position, 
+                    -(_ownerRigidbody.transform.position - _grapplingAttachedRigidbody.transform.position).normalized, out RaycastHit hitInfo, _maxRange))
+                {
+                    if (hitInfo.collider.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                    {
+                        b_grapplingToRigidbody = true;
+                        _grapplingAttachedRigidbody = rb;
+                        _grapplingHitInfo = hitInfo;
+                    }
+                    else
+                    {
+                        StopShooting();
+                        StopAlternateShooting();
+                    }
+                }
+            }
             transform.LookAt(_grapplingHitInfo.point);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
             _lineRenderer.SetPosition(0, _canonPosition.position);
@@ -115,6 +136,12 @@ public class GrapplingGun : Weapon
 
                 _ammo--;
 
+                if (hitInfo.collider.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                {
+                    b_grapplingToRigidbody = true;
+                    _grapplingAttachedRigidbody = rb;
+                }
+
                 if (_impactParticles)
                 {
                     Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
@@ -135,6 +162,7 @@ public class GrapplingGun : Weapon
     {
         if (b_grappling)
         {
+            b_grapplingToRigidbody = false;
             b_grappling = false;
             StartCoroutine(WaitForFireRate());
             if (_grapplingTime <= _grapplingPullTimeTreshold)
@@ -171,6 +199,12 @@ public class GrapplingGun : Weapon
 
                     _ammo--;
 
+                    if (hitInfo.collider.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                    {
+                        b_grapplingToRigidbody = true;
+                        _grapplingAttachedRigidbody = rb;
+                    }
+
                     if (_impactParticles)
                     {
                         Destroy(Instantiate(_impactParticles, hitInfo.point, Quaternion.Euler(hitInfo.normal)), 10);
@@ -192,6 +226,7 @@ public class GrapplingGun : Weapon
         if (b_swinging)
         {
             b_swinging = false;
+            b_grapplingToRigidbody = false;
         }
     }
 
