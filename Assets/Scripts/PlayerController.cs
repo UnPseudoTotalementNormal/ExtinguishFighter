@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource _shootSource;
 
+    private bool _holdingSlide = false;
+    [SerializeField] private Transform _legPivot;
+
+    [SerializeField] private TextMeshProUGUI _debugText1;
+
     private void Awake()
     {
         Instance = this;
@@ -48,16 +54,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _mouseVel += Mouse.current.delta.ReadValue();
+        _debugText1.text = "NOT SLIDING";
+        _legPivot.gameObject.SetActive(false);
 
-        /*if (Input.GetKeyDown(KeyCode.Mouse0))
+        _mouseVel += Mouse.current.delta.ReadValue();
+        switch (_state)
         {
-            _shootSource.Play();
+            case STATE.NORMAL:
+                if (_holdingSlide) SlideCheck();
+                break;
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            _shootSource.Stop();
-        }*/
+        
     }
 
     private void FixedUpdate()
@@ -69,6 +76,7 @@ public class PlayerController : MonoBehaviour
                 RotationVel();
                 MovementDeceleration();
                 RotationDeceleration();
+                
                 break;
         }
 
@@ -112,6 +120,38 @@ public class PlayerController : MonoBehaviour
     {
         //_rigidbody.angularVelocity -= _rigidbody.angularVelocity.normalized * _rotationdeceleration;
         _rigidbody.angularVelocity = Vector3.Lerp(_rigidbody.angularVelocity, Vector3.zero, _rotationdeceleration * Time.fixedDeltaTime);
+    }
+
+    private void SlideCheck()
+    {
+        foreach (Collider item in Physics.OverlapSphere(_transform.position, 2, ~(1 << LayerMask.NameToLayer("Player"))))
+        {
+            Vector3 itemPoint = item.ClosestPoint(_transform.position);
+            if (Physics.Raycast(_transform.position, (_transform.forward - itemPoint).normalized, out RaycastHit hitInfo, 100, ~(1 << LayerMask.NameToLayer("Player"))))
+            {
+                Vector3 newDirection = Vector3.ProjectOnPlane(_rigidbody.velocity, hitInfo.normal).normalized;
+                if (Vector3.Dot(newDirection, _rigidbody.velocity.normalized) > 0.75f)
+                {
+                    _rigidbody.velocity = newDirection * _rigidbody.velocity.magnitude;
+                    _legPivot.gameObject.SetActive(true);
+                    _legPivot.LookAt((_transform.position + _rigidbody.velocity), hitInfo.normal);
+                    _debugText1.text = "IS SLIDING";
+                    break;
+                }
+            }
+        }
+    }
+
+    public void OnSlide(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _holdingSlide = true;
+        }
+        else if (context.canceled)
+        {
+            _holdingSlide = false;
+        }
     }
 
     public void OnKick(InputAction.CallbackContext context)
