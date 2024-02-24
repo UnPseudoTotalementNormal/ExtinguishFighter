@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _holdingSlide = false;
     [SerializeField] private Transform _legPivot;
+    [SerializeField] private Transform _armPivot;
+    [SerializeField] private Transform _slidingHand;
 
     [SerializeField] private TextMeshProUGUI _debugText1;
 
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
     {
         _debugText1.text = "NOT SLIDING";
         _legPivot.gameObject.SetActive(false);
+        _armPivot.gameObject.SetActive(false);
+        _slidingHand.parent.gameObject.SetActive(false);
 
         _mouseVel += Mouse.current.delta.ReadValue();
         switch (_state)
@@ -127,15 +131,41 @@ public class PlayerController : MonoBehaviour
         foreach (Collider item in Physics.OverlapSphere(_transform.position, 2, ~(1 << LayerMask.NameToLayer("Player"))))
         {
             Vector3 itemPoint = item.ClosestPoint(_transform.position);
-            if (Physics.Raycast(_transform.position, (_transform.forward - itemPoint).normalized, out RaycastHit hitInfo, 100, ~(1 << LayerMask.NameToLayer("Player"))))
+            Vector3 raycastDir = (itemPoint - _transform.position).normalized;
+            if (Physics.Raycast(_transform.position, raycastDir, out RaycastHit hitInfo, 100, ~(1 << LayerMask.NameToLayer("Player"))))
             {
                 Vector3 newDirection = Vector3.ProjectOnPlane(_rigidbody.velocity, hitInfo.normal).normalized;
                 if (Vector3.Dot(newDirection, _rigidbody.velocity.normalized) > 0.75f)
                 {
                     _rigidbody.velocity = newDirection * _rigidbody.velocity.magnitude;
-                    _legPivot.gameObject.SetActive(true);
+                    if (hitInfo.distance > 0.75f)
+                    {
+                        _transform.position = _transform.position + (raycastDir * Time.deltaTime);
+                    }
+                    else if (hitInfo.distance < 0.65f)
+                    {
+                        _transform.position = _transform.position - (raycastDir * Time.deltaTime);
+                    }
+
+
                     _legPivot.LookAt((_transform.position + _rigidbody.velocity), hitInfo.normal);
-                    _debugText1.text = "IS SLIDING";
+                    if (_legPivot.localEulerAngles.z < 35 || _legPivot.localEulerAngles.z > (360 - 35))
+                    {
+                        _legPivot.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        //_armPivot.gameObject.SetActive(true);
+                        _armPivot.LookAt(hitInfo.point);
+
+                        _slidingHand.parent.gameObject.SetActive(true);
+                        _slidingHand.position = hitInfo.point;
+                        _slidingHand.parent.LookAt(hitInfo.point);
+                        _slidingHand.parent.localEulerAngles = new Vector3(_slidingHand.parent.localEulerAngles.x, _slidingHand.parent.localEulerAngles.y, 0);
+                    }
+                    
+                    
+                    _debugText1.text = _legPivot.eulerAngles.z.ToString();
                     break;
                 }
             }

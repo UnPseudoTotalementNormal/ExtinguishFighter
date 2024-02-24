@@ -228,6 +228,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5723936944568745471, guid: c8d609e87f20fca4ea5c8b80d21501d2, type: 3}
   m_PrefabInstance: {fileID: 19201663}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &34086230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4781515771722029576, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+  m_PrefabInstance: {fileID: 261513775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &50076129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,6 +613,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105444476}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &106286004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1219778720194401221, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+  m_PrefabInstance: {fileID: 261513775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &133319905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1401,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 500989130727060763, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _armPivot
+      value: 
+      objectReference: {fileID: 106286004}
+    - target: {fileID: 500989130727060763, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: _legPivot
       value: 
       objectReference: {fileID: 1825218575}
@@ -1398,13 +1412,13 @@ PrefabInstance:
       propertyPath: _debugText1
       value: 
       objectReference: {fileID: 1854231589}
+    - target: {fileID: 500989130727060763, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
+      propertyPath: _slidingHand
+      value: 
+      objectReference: {fileID: 34086230}
     - target: {fileID: 2557182725545676161, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640611444696061295, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3014991674445974486, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_ActionEvents.Array.size
@@ -1458,10 +1472,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5943472277885111462, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7637366841347003551, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1510,10 +1520,6 @@ PrefabInstance:
       propertyPath: _enemyText
       value: 
       objectReference: {fileID: 397563492}
-    - target: {fileID: 9209226802471453996, guid: 6167fd9dc6d254046887ed5e8e798f89, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
