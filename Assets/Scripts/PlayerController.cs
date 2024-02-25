@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource _shootSource;
 
     private bool _holdingSlide = false;
+    private bool _sliding = false;
+    private bool _onLegs = false;
     [SerializeField] private Transform _legPivot;
     [SerializeField] private Transform _armPivot;
     [SerializeField] private Transform _slidingHand;
@@ -57,10 +59,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _debugText1.text = "NOT SLIDING";
-        _legPivot.gameObject.SetActive(false);
+        //_legPivot.gameObject.SetActive(false);
         _armPivot.gameObject.SetActive(false);
         _slidingHand.parent.gameObject.SetActive(false);
 
+        LegAnimation();
         _mouseVel += Mouse.current.delta.ReadValue();
         switch (_state)
         {
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void SlideCheck()
     {
+        _sliding = false;
         foreach (Collider item in Physics.OverlapSphere(_transform.position, 2, ~(1 << LayerMask.NameToLayer("Player"))))
         {
             Vector3 itemPoint = item.ClosestPoint(_transform.position);
@@ -137,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 newDirection = Vector3.ProjectOnPlane(_rigidbody.velocity, hitInfo.normal).normalized;
                 if (Vector3.Dot(newDirection, _rigidbody.velocity.normalized) > 0.75f)
                 {
+                    _sliding = true;
                     _rigidbody.velocity = newDirection * _rigidbody.velocity.magnitude;
                     if (hitInfo.distance > 0.75f)
                     {
@@ -147,15 +152,18 @@ public class PlayerController : MonoBehaviour
                         _transform.position = _transform.position - (raycastDir * Time.deltaTime);
                     }
 
-
+                    Quaternion oldLegRot = _legPivot.rotation;
                     _legPivot.LookAt((_transform.position + _rigidbody.velocity), hitInfo.normal);
                     if (_legPivot.localEulerAngles.z < 35 || _legPivot.localEulerAngles.z > (360 - 35))
                     {
-                        _legPivot.gameObject.SetActive(true);
+                        //_legPivot.gameObject.SetActive(true);
+                        _onLegs = true;
                     }
                     else
                     {
                         //_armPivot.gameObject.SetActive(true);
+                        _onLegs = false;
+                        _legPivot.rotation = oldLegRot;
                         _armPivot.LookAt(hitInfo.point);
 
                         _slidingHand.parent.gameObject.SetActive(true);
@@ -165,10 +173,23 @@ public class PlayerController : MonoBehaviour
                     }
                     
                     
-                    _debugText1.text = _legPivot.eulerAngles.z.ToString();
+                    _debugText1.text = _onLegs.ToString();
                     break;
                 }
             }
+        }
+    }
+
+    private void LegAnimation()
+    {
+        if (_onLegs && _sliding && _holdingSlide)
+        {
+            _legPivot.localPosition = Vector3.Lerp(_legPivot.localPosition, Vector3.zero, 8 * Time.deltaTime);
+        }
+        else
+        {
+            _legPivot.localPosition = Vector3.Lerp(_legPivot.localPosition, new Vector3(0, 0, -0.5f), 8 * Time.deltaTime);
+            _legPivot.localRotation = Quaternion.Lerp(_legPivot.localRotation, Quaternion.identity, 8 * Time.deltaTime);
         }
     }
 
